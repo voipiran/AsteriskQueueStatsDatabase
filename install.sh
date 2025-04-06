@@ -23,7 +23,7 @@ sed -i '/\[options\]/a log\_membername\_as\_agent\=no' /etc/asterisk/asterisk.co
 echo "-------------odbc.ini----------------"
 echo "" >> /etc/odbc.ini
 echo "[voipiran_stats]" >> /etc/odbc.ini
-echo "driver=MySQL ODBC 5.3 ANSI Driver" >> /etc/odbc.ini
+echo "driver=MariaDB" >> /etc/odbc.ini
 echo "server=localhost" >> /etc/odbc.ini
 echo "database=voipiran_stats" >> /etc/odbc.ini
 echo "Port=3306" >> /etc/odbc.ini
