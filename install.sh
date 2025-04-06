@@ -6,6 +6,9 @@ echo "Hamed Kouhfallah"
 echo "k.haamed@gmail.com"
 sleep 3
 
+###Fetch DB root PASSWORD
+rootpw=$(sed -ne 's/.*mysqlrootpwd=//gp' /etc/issabel.conf)
+
 ### Create Database
 echo "Install CallStats Mysql DataBase"
 echo "------------Create DB-----------------"
