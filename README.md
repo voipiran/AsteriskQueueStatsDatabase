@@ -5,9 +5,9 @@ Create Asterisk Queue Database and Insert Asterisk Queue Logs.
 
 ## Run This command on your Linux CLI:
 ```
-curl -L https://github.com/voipiran/AsteriskQueueDatabase/archive/refs/heads/main.zip -o AsteriskQueueDatabase.zip \
-&& unzip -o AsteriskQueueDatabase.zip \
-&& cd AsteriskQueueDatabase-main \
+curl -L https://github.com/voipiran/AsteriskQueueStatsDatabase/archive/refs/heads/main.zip -o AsteriskQueueStatsDatabase.zip \
+&& unzip -o AsteriskQueueStatsDatabase.zip \
+&& cd AsteriskQueueStatsDatabase-main \
 && chmod +x install.sh \
 && ./install.sh
 
