@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "Install VOIPIRAN Stats"
+echo "VOIPIRAN.io"
+sleep 1
 
 echo "Install VOIPIRAN Asterisk Queue Database"
 echo "VOIPIRAN.io"
@@ -43,8 +46,30 @@ echo "pre-connect=>yes" >> /etc/asterisk/res_odbc_custom.conf
 echo "username=>root" >> /etc/asterisk/res_odbc_custom.conf
 echo "password=>${rootpw}" >> /etc/asterisk/res_odbc_custom.conf
 
+
+    # اضافه کردن log_membername_as_agent در queues_custom.conf
+    QUEUE_CONF="/etc/asterisk/queues_custom.conf"
+    SETTING="log_membername_as_agent = yes"
+
+    if [ ! -f "$QUEUE_CONF" ]; then
+        echo "⚠️ فایل $QUEUE_CONF وجود نداشت. در حال ساخت فایل..."
+        touch "$QUEUE_CONF"
+    fi
+
+    if grep -Fxq "$SETTING" "$QUEUE_CONF"; then
+        echo "✔️ $SETTING از قبل در $QUEUE_CONF وجود دارد"
+    else
+        echo "➕ افزودن $SETTING به $QUEUE_CONF"
+        echo "" >> "$QUEUE_CONF"
+        echo "; Added by script for voipiran stats" >> "$QUEUE_CONF"
+        echo "$SETTING" >> "$QUEUE_CONF"
+    fi
+
+
 ### Add ODBC 
 echo "-------------extconfig.conf----------------"
 sed -i '/\[settings\]/a queue\_log \=\> odbc\,voipiran\_stats\,queue\_stats' /etc/asterisk/extconfig.conf
 
 
+### Restart Asterisk
+asterisk -rx "reload"
