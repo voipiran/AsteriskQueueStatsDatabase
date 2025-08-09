@@ -50,6 +50,10 @@ echo "password=>${rootpw}" >> /etc/asterisk/res_odbc_custom.conf
     # اضافه کردن log_membername_as_agent در queues_custom.conf
     QUEUE_CONF="/etc/asterisk/queues_custom.conf"
     SETTING="log_membername_as_agent = yes"
+	
+		 # اضافه کردن log_membername_as_agent در queues_custom.conf
+    QUEUE_CONF2="/etc/asterisk/queues_custom_general.conf"
+    SETTING="log_membername_as_agent = yes"
 
     if [ ! -f "$QUEUE_CONF" ]; then
         echo "⚠️ فایل $QUEUE_CONF وجود نداشت. در حال ساخت فایل..."
