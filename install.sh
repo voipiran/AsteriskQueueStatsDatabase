@@ -20,7 +20,7 @@ mysql -uroot -p$rootpw -e "GRANT ALL PRIVILEGES ON voipiran_stats.* TO 'root'@'l
 
 #Asterisk Queue Adaptive
 sed -i '/\[options\]/a queue\_adaptive\_realtime\=no' /etc/asterisk/asterisk.conf
-sed -i '/\[options\]/a log\_membername\_as\_agent\=no' /etc/asterisk/asterisk.conf
+sed -i '/\[options\]/a log\_membername\_as\_agent\=yes' /etc/asterisk/asterisk.conf
 
 ### Add ODBC 
 echo "-------------odbc.ini----------------"
@@ -46,10 +46,6 @@ echo "pre-connect=>yes" >> /etc/asterisk/res_odbc_custom.conf
 echo "username=>root" >> /etc/asterisk/res_odbc_custom.conf
 echo "password=>${rootpw}" >> /etc/asterisk/res_odbc_custom.conf
 
-
-    # اضافه کردن log_membername_as_agent در queues_custom.conf
-    QUEUE_CONF="/etc/asterisk/queues_custom.conf"
-    SETTING="log_membername_as_agent = yes"
 	
 		 # اضافه کردن log_membername_as_agent در queues_custom.conf
     QUEUE_CONF2="/etc/asterisk/queues_custom_general.conf"
